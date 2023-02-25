@@ -1,7 +1,10 @@
+import { Vector, map, CLOSE } from "p5";
+
 export class Vehicle {
-  constructor(x, y) {
-    this.acceleration = window.p5.createVector(0, 0);
-    this.velocity = window.p5.Vector.random2D();
+  constructor(x, y, p5) {
+    this.p5 = p5;
+    this.acceleration = p5.createVector(0, 0);
+    this.velocity = Vector.random2D();
     this.position = p5.createVector(x, y);
     this.radius = 8;
     this.maxspeed = 12;
@@ -35,7 +38,7 @@ export class Vehicle {
 
     // Scale with arbitrary damping within 200 pixels
     if (desiredMag < 200) {
-      var m = map(desiredMag, 0, 200, 0, this.maxspeed);
+      var m = this.p5.map(desiredMag, 0, 200, 0, this.maxspeed);
       desiredVel.setMag(m);
     } else {
       desiredVel.setMag(this.maxspeed);
@@ -48,18 +51,18 @@ export class Vehicle {
 
   display() {
     // Draw a triangle rotated in the direction of velocity
-    var theta = this.velocity.heading() + PI / 2;
-    fill(255);
-    stroke(255);
-    strokeWeight(1);
-    push();
-    translate(this.position.x, this.position.y);
-    rotate(theta);
-    beginShape();
-    vertex(0, -this.radius * 2);
-    vertex(-this.radius, this.radius * 2);
-    vertex(this.radius, this.radius * 2);
-    endShape(CLOSE);
-    pop();
+    var theta = this.velocity.heading() + Math.PI / 2;
+    this.p5.fill(255);
+    this.p5.stroke(255);
+    this.p5.strokeWeight(1);
+    this.p5.push();
+    this.p5.translate(this.position.x, this.position.y);
+    this.p5.rotate(theta);
+    this.p5.beginShape();
+    this.p5.vertex(0, -this.radius * 2);
+    this.p5.vertex(-this.radius, this.radius * 2);
+    this.p5.vertex(this.radius, this.radius * 2);
+    this.p5.endShape(CLOSE);
+    this.p5.pop();
   }
 }

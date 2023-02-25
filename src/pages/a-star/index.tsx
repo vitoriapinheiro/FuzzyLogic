@@ -1,4 +1,4 @@
-import p5Types from "p5";
+import p5Types, { Vector } from "p5";
 import Sketch from "react-p5";
 import { Box, Text } from "@chakra-ui/react";
 import { Vehicle } from "./vehicle.js";
@@ -7,10 +7,12 @@ export default function AStar() {
   let x = 50;
   const y = 50;
 
-  let v = new Vehicle(200 / 2, 200 / 2);
+  let v: any;
+  let target: any;
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(800, 800);
-    let target = window.p5.createVector(200 / 2, 200 / 2);
+    v = new Vehicle(100 / 2, 100 / 2, p5);
+    target = p5.createVector(200 / 2, 200 / 2);
   };
 
   const draw = (p5: p5Types) => {
@@ -22,7 +24,7 @@ export default function AStar() {
     p5.strokeWeight(2);
     p5.ellipse(target.x, target.y, 24, 24);
 
-    if (window.p5.Vector.dist(v.position, target) < 8) {
+    if (Vector.dist(v.position, target) < 8) {
       target = p5.createVector(p5.random(p5.width), p5.random(p5.height));
       v.counter++;
     }
