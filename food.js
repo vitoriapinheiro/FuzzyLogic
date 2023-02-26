@@ -8,17 +8,21 @@ class Food {
 
     this.i = Math.floor(random(this.linha));
     this.j = Math.floor(random(this.coluna));
-
   }
 
   // Display the food
   run() {
-    while(this.grid.grid[this.i][this.j] === "parede"){
+    while (this.grid.grid[this.i][this.j] === "parede") {
       this.i = Math.floor(random(this.linha));
       this.j = Math.floor(random(this.coluna));
     }
-      fill('#fae');
-      rect(this.i * this.cellSize, this.j * this.cellSize, this.cellSize, this.cellSize);
+    fill("#fae");
+    rect(
+      this.i * this.cellSize,
+      this.j * this.cellSize,
+      this.cellSize,
+      this.cellSize
+    );
   }
 
   getFood() {
