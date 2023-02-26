@@ -18,28 +18,14 @@ class Turtle{
     }
 
     applyForce(force){
-        this.acc.add(force);
+        this.acc.add(force)
     }
 
     addVisited(grid){
         let i = Math.floor(this.pos.x / grid.cellSize);
         let j = Math.floor(this.pos.y / grid.cellSize);
-        this.visited.push(createVector(i,j));
+        this.visited.push(createVector(i,j))
         grid.grid[i][j] = "visited";
-    }
-
-    drawPath(grid) {
-        stroke(0, 255, 0);
-        strokeWeight(this.r);
-      
-        for (let i = 1; i < this.visited.length; i++) {
-          let previous = this.visited[i - 1];
-          let current = this.visited[i];
-          line(previous.pos.x * grid.cellSize + grid.cellSize / 2,
-               previous.pos.y * grid.cellSize + grid.cellSize / 2,
-               current.pos.x * grid.cellSize + grid.cellSize / 2,
-               current.pos.y * grid.cellSize + grid.cellSize / 2);
-        }
     }
 
 }

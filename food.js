@@ -17,8 +17,8 @@ class Food {
     this.y = i * tamanhoCelula + (tamanhoCelula / 2)
 
     // Create the food vector
-    this.food = createVector(x, y);
-    grid[this.x][this.y] = "food"
+    // this.food = createVector(x, y);
+    // grid[this.x][this.y] = "food"
   }
 
   // Display the food
