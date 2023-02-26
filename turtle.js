@@ -24,6 +24,7 @@ class Turtle{
     addVisited(grid){
         let i = Math.floor(this.pos.x / grid.cellSize);
         let j = Math.floor(this.pos.y / grid.cellSize);
+        this.visited.push(createVector(i,j))
         grid.grid[i][j] = "visited";
     }
 
