@@ -21,8 +21,10 @@ class Turtle{
         this.acc.add(force)
     }
 
-    addVisited(){
-        this.visited.push(this.pos)
+    addVisited(grid){
+        let i = Math.floor(this.pos.x / grid.cellSize);
+        let j = Math.floor(this.pos.y / grid.cellSize);
+        grid.grid[i][j] = "visited";
     }
 
 }
