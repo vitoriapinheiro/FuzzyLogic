@@ -7,5 +7,6 @@ class World{
   
     run(){
       this.grid.drawGrid();
+      this.food.run();
     }
   }

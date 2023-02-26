@@ -1,35 +1,24 @@
 class Food {
   constructor(grid) {
     // Get the dimensions of the grid
-    let numLinhas = grid.linha
-    let numColunas = grid.coluna
-    let tamanhoCelula = grid.cellSize
+    this.linha = grid.linha;
+    this.coluna = grid.coluna;
+    this.cellSize = grid.cellSize;
+    this.grid = grid;
 
-    // Remove any existing food
-    this.food = null;
+    this.i = Math.floor(random(this.linha));
+    this.j = Math.floor(random(this.coluna));
 
-
-    let i = Math.floor(random(numLinhas))
-    let j = Math.floor(random(numColunas))
-
-    // Localização em pixels 
-    this.x = j * tamanhoCelula + (tamanhoCelula / 2)
-    this.y = i * tamanhoCelula + (tamanhoCelula / 2)
-
-    // Create the food vector
-    // this.food = createVector(x, y);
-    // grid[this.x][this.y] = "food"
   }
 
   // Display the food
   run() {
-    if (this.food) {
-      let f = this.food;
-      rectMode(CENTER);
-      stroke(0);
-      fill(127);
-      rect(f.x, f.y, 8, 8);
+    while(this.grid.grid[this.i][this.j] === "parede"){
+      this.i = Math.floor(random(this.linha));
+      this.j = Math.floor(random(this.coluna));
     }
+      fill('#fae');
+      rect(this.i * this.cellSize, this.j * this.cellSize, this.cellSize, this.cellSize);
   }
 
   getFood() {
