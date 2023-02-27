@@ -8,6 +8,7 @@ class Food {
 
   // Display the food
   run() {
+    
   }
 
   getFood() {
