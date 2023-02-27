@@ -8,7 +8,7 @@ class Grid{
         for(let i = 0; i < this.coluna; i++){
             
             let col = [];
-            for(let j = 0; j < this.linha; j++)col.push("vazio");
+            for(let j = 0; j < this.linha; j++)col.push({title: "vazio", weight: 0});
 
             this.gridMatrix.push(col);
         }
@@ -16,7 +16,7 @@ class Grid{
     drawGrid(){
         for(let i = 0; i < this.coluna; i++){
             for(let j = 0; j < this.linha;j++){
-                switch(this.gridMatrix[i][j]){
+                switch(this.gridMatrix[i][j].title){
                     case "vazio" :
                         fill("255");
                         break;
@@ -52,28 +52,28 @@ class Grid{
         for(let i = 0; i < grassCount; i++){
             let x = int(random(this.coluna));
             let y = int(random(this.linha));
-            this.gridMatrix[x][y] = "grass";
+            this.gridMatrix[x][y] = {title: "grass", weight: 5};
         }
 
         for(let i = 0; i < grassCount; i++){
             let x = int(random(this.coluna));
             let y = int(random(this.linha));
-            this.gridMatrix[x][y] = "water";
+            this.gridMatrix[x][y] = {title: "water", weight: 10};
         }
       
 
         for(let i = 0; i < paredeCount; i++){
             let x = int(random(this.coluna));
             let y = int(random(this.linha));
-            this.gridMatrix[x][y] = "parede";
+            this.gridMatrix[x][y] = {title: "parede", weight: Infinity};
         }
     }
     addFood(){
         let x = Math.floor(int(random(this.coluna)));
         let y = Math.floor(int(random(this.linha)));
         while(1){
-          if(this.gridMatrix[x][y]==="vazio"){
-             this.gridMatrix[x][y] = "comida";
+          if(this.gridMatrix[x][y].title === "vazio"){
+             this.gridMatrix[x][y] = {title: "comida", weight: 0};
             break;
             }
           x = Math.floor(int(random(this.coluna)));
@@ -85,8 +85,8 @@ class Grid{
         let x = Math.floor(int(random(this.coluna)));
         let y = Math.floor(int(random(this.linha)));
         while(1){
-          if(this.gridMatrix[x][y]==="vazio"){
-             this.gridMatrix[x][y] = "agente";
+          if(this.gridMatrix[x][y].title === "vazio"){
+             this.gridMatrix[x][y] = {title: "agente", weight: Infinity};
             break;
             }
           x = Math.floor(int(random(this.coluna)));
