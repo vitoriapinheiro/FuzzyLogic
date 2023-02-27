@@ -67,31 +67,24 @@ class Grid {
   }
 
   addFood() {
-    let x = Math.floor(int(random(this.coluna)));
-    let y = Math.floor(int(random(this.linha)));
-    while (1) {
-      if (this.gridMatrix[x][y].title === "vazio") {
-        this.gridMatrix[x][y] = { title: "comida", weight: 0 };
-        break;
-      }
-      x = Math.floor(int(random(this.coluna)));
-      y = Math.floor(int(random(this.linha)));
-    }
+    let x, y;
+    do {
+      x = Math.floor(Math.random() * this.coluna);
+      y = Math.floor(Math.random() * this.linha);
+    } while (this.gridMatrix[x][y].title !== "vazio");
 
+    this.gridMatrix[x][y] = { title: "comida", weight: 0 };
     return { foodX: x, foodY: y };
   }
 
   addAgent() {
-    let x = Math.floor(int(random(this.coluna)));
-    let y = Math.floor(int(random(this.linha)));
-    while (1) {
-      if (this.gridMatrix[x][y].title === "vazio") {
-        this.gridMatrix[x][y] = { title: "agente", weight: Infinity };
-        break;
-      }
-      x = Math.floor(int(random(this.coluna)));
-      y = Math.floor(int(random(this.linha)));
-    }
+    let x, y;
+    do {
+      x = Math.floor(Math.random() * this.coluna);
+      y = Math.floor(Math.random() * this.linha);
+    } while (this.gridMatrix[x][y].title !== "vazio");
+
+    this.gridMatrix[x][y] = { title: "agente", weight: Infinity };
     return { agentX: x, agentY: y };
   }
 }
