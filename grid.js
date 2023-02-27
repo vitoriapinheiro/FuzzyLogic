@@ -36,10 +36,6 @@ class Grid {
           case "comida":
             fill("#fae");
             break;
-
-          case "agente":
-            fill("#ff0");
-            break;
         }
         rect(
           i * this.cellSize,
@@ -69,6 +65,7 @@ class Grid {
       this.gridMatrix[x][y] = { title: "parede", weight: Infinity };
     }
   }
+
   addFood() {
     let x = Math.floor(int(random(this.coluna)));
     let y = Math.floor(int(random(this.linha)));
@@ -80,8 +77,10 @@ class Grid {
       x = Math.floor(int(random(this.coluna)));
       y = Math.floor(int(random(this.linha)));
     }
-    return { x, y };
+
+    return { foodX: x, foodY: y };
   }
+
   addAgent() {
     let x = Math.floor(int(random(this.coluna)));
     let y = Math.floor(int(random(this.linha)));
@@ -93,6 +92,6 @@ class Grid {
       x = Math.floor(int(random(this.coluna)));
       y = Math.floor(int(random(this.linha)));
     }
-    return { x, y };
+    return { agentX: x, agentY: y };
   }
 }
